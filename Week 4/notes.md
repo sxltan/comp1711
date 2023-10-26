@@ -164,3 +164,89 @@ gcc create_file.o utils.o -o create_file
 3. Generate the executable by combining the object files (extension .o)
 
 MAKE: A Linux tool that allows this compiling process to be simplified (Semester 2)
+
+## Data Types & Structures
+
+### Initialising Structures
+
+#### Setup Template:
+
+```c++
+struct student {
+    char name [20];
+    char student_id [11]; // Assuming 10 digits.
+    unsigned mark;
+};
+```
+
+- `struct` is defined out of a function
+- `struct student` has 3 fields, each with its own type
+- Fields can be variables, arrays, structs, etc.
+
+<br>
+
+#### Initialise New Record + Input Data + Output Data:
+
+```c++
+int main () {
+    struct student new_student = {"Name Surname", "28932123", 35};
+    printf("Student name: %s\n", new_student.name);
+    printf("Student ID:   %s\n", new_student.student_id);
+    printf("Final mark:   %u\n", new_student.mark);
+    return 0;
+}
+```
+
+- The designator `.<fieldname>` is used to initialise individual fields:
+  ```c++
+  struct student new_student = {.name = "Name Surname", .student_id = "28932123", .mark = 35];}
+  ```
+
+#### Assigning Fields
+
+```c++
+#include <string.h>
+
+int main() {
+    struct student new_student;
+    strcpy(new_student.name, "Name Surname");
+    strcpy(new_student.student_id, "13902178");
+    printf("Student name: %s\n", new_student.name);
+    printf("Student ID: %s\n", new_student.student_id);
+    printf("Final mark: %u\n", new_student.mark);
+    return 0;
+}
+```
+
+- `strcpy` = String Copy (Assigns data to fields) # Must include <string.h>
+
+### Arrays of Structures
+
+```c++
+#include <stdio.h>
+
+typedef struct {
+    char name [20];
+    char student_id [11];
+    unsigned mark;
+} student;
+
+int main () {
+    int number_of_students = 10, i;
+    student students [] = {
+        {...}, // Initialisation goes here
+    };
+    for (i = 0; i < number_of_students; i++) {
+        printf("-------------\n");
+        printf("Student name: %s\n", students[i].name);
+        printf("Student ID: %s\n", students[i].student_id);
+        printf("Final mark: %u\n", students[i].mark);
+    }
+    printf("-------------\n");
+    return 0;
+}
+```
+
+- All elements in the array can be initialised simultaneously
+- `typedef` is used to define an alias for a struct
+- The size of the array is not needed if entries are initialised
