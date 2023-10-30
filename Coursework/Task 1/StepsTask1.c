@@ -49,7 +49,7 @@ FILE *open_file(char filename[], char mode[])
     if (file == NULL) 
     {
         perror("Error opening file");
-        exit(1); // Exits program with return status 1
+        exit(1);
     }
     return file;
 }
