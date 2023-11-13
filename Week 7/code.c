@@ -112,26 +112,28 @@ int main()
             printf("The highest blood iron level was %.2f\n", find_highest(daily_readings, counter));
             fclose(input);
             break;
+        
 
         case 'E':
         case 'e':
-            // Take any two strings
-            char s1[] = "GeeksforGeeks";
-            char s2[] = "for";
-            char* p;
- 
-            // Find first occurrence of s2 in s1
-            p = strstr(s1, s2);
- 
-            // Prints the result
-            if (p) {
-            printf("String found\n");
-            printf("First occurrence of string '%s' in '%s' is '%s'", s2, s1, p);
+        {
+            char month[buffer_size]; // Declaration must be the first in a block
+
+            printf("Please enter the month you want to view (e.g., \"OCT or OCT-2023\" for October (2023)): ");
+            fgets(month, buffer_size, stdin);
+            month[strcspn(month, "\n")] = 0; // Remove the newline character
+
+            input = fopen(filename, "r");
+            if (!input) {
+                printf("Error: File could not be opened\n");
+                return 1;
             }
-            else
-                printf("String not found\n");
-            return 0;
+
+            monthly_iron(input, daily_readings, month);
+
+            fclose(input);
             break;
+        }
 
         case 'F':
         case 'f':

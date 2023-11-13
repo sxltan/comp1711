@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include <stdbool.h>
 
 // declaring this value so I can use it in different places
 #define buffer_size 100
@@ -147,7 +148,24 @@ float find_lowest(reading* dataArray, int numReadings)
  * @param dataArray The array of data from the file
  * @param numReadings The number of readings in the array
  */
-void monthly_iron(reading* dataArray, int numReadings)
+// void monthly_iron(reading* dataArray, int numReadings) {}
+
+void monthly_iron(FILE *input, reading daily_readings[], const char *month)
 {
-    // to do
+    char line[buffer_size];
+    int counter = 0;
+    bool found = false;
+
+    // Assume file is already open
+    while (fgets(line, buffer_size, input)) {
+        tokeniseRecord(line, ",", daily_readings[counter].date, &daily_readings[counter].bloodIron);
+        if (strstr(daily_readings[counter].date, month)) {
+            printf("%s - Blood iron: %.1f\n", daily_readings[counter].date, daily_readings[counter].bloodIron);
+            found = true;
+        }
+        counter++;
+    }
+    if (!found) {
+        printf("No records found for the month %s\n", month);
+    }
 }
