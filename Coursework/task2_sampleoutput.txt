@@ -1,0 +1,137 @@
+Run the program and select Q
+============================
+Program should exit
+
+./StepCounter_Final 
+
+Menu Options:
+A: Specify the filename to be imported
+B: Display the total number of records in the file
+C: Find the date and time of the timeslot with the fewest steps
+D: Find the date and time of the timeslot with the largest number of steps
+E: Find the mean step count of all the records in the file
+F: Find the longest continuous period where the step count is above 500 steps
+Q: Quit
+Enter choice: Q
+
+Run the program and select an unknown option
+============================================
+(Eg. select R)
+
+Program should display the menu again with a suitable error message
+
+./StepCounter_Final 
+Menu Options:
+A: Specify the filename to be imported
+B: Display the total number of records in the file
+C: Find the date and time of the timeslot with the fewest steps
+D: Find the date and time of the timeslot with the largest number of steps
+E: Find the mean step count of all the records in the file
+F: Find the longest continuous period where the step count is above 500 steps
+Q: Quit
+Enter choice: R
+Invalid choice. Try again.
+Menu Options:
+A: Specify the filename to be imported
+B: Display the total number of records in the file
+C: Find the date and time of the timeslot with the fewest steps
+D: Find the date and time of the timeslot with the largest number of steps
+E: Find the mean step count of all the records in the file
+F: Find the longest continuous period where the step count is above 500 steps
+Q: Quit
+Enter choice: 
+
+Incorrectly named data file
+===========================
+
+Program should exit
+
+ ./StepCounter_Final 
+
+Menu Options:
+A: Specify the filename to be imported
+B: Display the total number of records in the file
+C: Find the date and time of the timeslot with the fewest steps
+D: Find the date and time of the timeslot with the largest number of steps
+E: Find the mean step count of all the records in the file
+F: Find the longest continuous period where the step count is above 500 steps
+Q: Quit
+Enter choice: A
+Input filename: FitnessData_2023.csv
+Error: Could not find or open the file.
+
+Correct Run
+===========
+
+./StepCounter_Final 
+Menu Options:
+A: Specify the filename to be imported
+B: Display the total number of records in the file
+C: Find the date and time of the timeslot with the fewest steps
+D: Find the date and time of the timeslot with the largest number of steps
+E: Find the mean step count of all the records in the file
+F: Find the longest continuous period where the step count is above 500 steps
+Q: Quit
+Enter choice: A
+Input filename: FitnessData_2023.csv
+File successfully loaded.
+Menu Options:
+A: Specify the filename to be imported
+B: Display the total number of records in the file
+C: Find the date and time of the timeslot with the fewest steps
+D: Find the date and time of the timeslot with the largest number of steps
+E: Find the mean step count of all the records in the file
+F: Find the longest continuous period where the step count is above 500 steps
+Q: Quit
+Enter choice: B
+Total records: 59
+Menu Options:
+A: Specify the filename to be imported
+B: Display the total number of records in the file
+C: Find the date and time of the timeslot with the fewest steps
+D: Find the date and time of the timeslot with the largest number of steps
+E: Find the mean step count of all the records in the file
+F: Find the longest continuous period where the step count is above 500 steps
+Q: Quit
+Enter choice: C
+Fewest steps: 2023-09-01 22:00
+Menu Options:
+A: Specify the filename to be imported
+B: Display the total number of records in the file
+C: Find the date and time of the timeslot with the fewest steps
+D: Find the date and time of the timeslot with the largest number of steps
+E: Find the mean step count of all the records in the file
+F: Find the longest continuous period where the step count is above 500 steps
+Q: Quit
+Enter choice: D
+Largest steps: 2023-09-01 16:15
+Menu Options:
+A: Specify the filename to be imported
+B: Display the total number of records in the file
+C: Find the date and time of the timeslot with the fewest steps
+D: Find the date and time of the timeslot with the largest number of steps
+E: Find the mean step count of all the records in the file
+F: Find the longest continuous period where the step count is above 500 steps
+Q: Quit
+Enter choice: E
+Mean step count: 265
+Menu Options:
+A: Specify the filename to be imported
+B: Display the total number of records in the file
+C: Find the date and time of the timeslot with the fewest steps
+D: Find the date and time of the timeslot with the largest number of steps
+E: Find the mean step count of all the records in the file
+F: Find the longest continuous period where the step count is above 500 steps
+Q: Quit
+Enter choice: F
+Longest period start: 2023-09-01 15:00
+Longest period end: 2023-09-01 16:15
+Menu Options:
+A: Specify the filename to be imported
+B: Display the total number of records in the file
+C: Find the date and time of the timeslot with the fewest steps
+D: Find the date and time of the timeslot with the largest number of steps
+E: Find the mean step count of all the records in the file
+F: Find the longest continuous period where the step count is above 500 steps
+Q: Quit
+Enter choice: Q
