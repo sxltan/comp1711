@@ -22,7 +22,7 @@ You are welcome to create additional files, for example introduce some different
 You have 2 files to compile, so you can use the command:
 
 ```bash
-gcc utilities.h blood_iron.c -o ironCalc
+gcc utilities.h code.c -o ironCalc
 ```
 
 And then run with:
