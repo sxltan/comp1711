@@ -6,7 +6,7 @@
 
 #define BUFFER_SIZE 1024
 
-FITNESS_DATA data[10000]; // Global array to store fitness data
+FITNESS_DATA data[10000]; // Array to store fitness data
 
 // Struct moved to header file
 
@@ -42,16 +42,13 @@ void tokeniseRecord(const char *input, const char *delimiter,
 
                     }
 
-
-
-
 // Complete the main function
 int main() {
     char filename[BUFFER_SIZE];
     char line[BUFFER_SIZE];
     int counter = 0;
 
-    // Main menu loop
+    // Menu loop
     while (1) {
         char choice;
         printf("Menu Options:\n");
@@ -112,7 +109,6 @@ int main() {
                 printf("Fewest steps: %s %s\n", data[minIndex].date, data[minIndex].time);
                 break;
 
-            
             case 'D':
             case 'd':
                 if (counter == 0) {
@@ -127,7 +123,6 @@ int main() {
                 }
                 printf("Largest steps: %s %s\n", data[maxIndex].date, data[maxIndex].time);
                 break;
-
 
             case 'E':
             case 'e':
@@ -186,6 +181,5 @@ int main() {
                 break;
         }
     }
-
     return 0;
 }
