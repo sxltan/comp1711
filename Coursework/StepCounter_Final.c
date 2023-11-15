@@ -76,17 +76,19 @@ int main() {
                 }
                 counter = 0;
                 while (fgets(line, BUFFER_SIZE, file)) {
-                    char stepsString[20];
+                    char stepsString[20]; // Make temporary array to store steps as a string before converting to integer
                     tokeniseRecord(line, ",", data[counter].date, data[counter].time, stepsString);
                     data[counter].steps = atoi(stepsString);
                     counter++;
                 }
                 fclose(file);
-                printf("File successfully loaded.");
+                printf("File successfully loaded.\n");
                 break;
 
             case 'B':
             case 'b':
+                // From now on I'll put a quick check at the start of every case to make sure the counter isn't 0
+                // ... (e.g. something went wrong with the file specification)
                 if (counter == 0) {
                     printf("No data available\n");
                     break;
@@ -100,7 +102,10 @@ int main() {
                     printf("No data available\n");
                     break;
                 }
+                // Setting the minimum value at the start of the loop to the first element at index 0
                 int minIndex = 0;
+                // A loop goes through checking if anything is smaller than the value at index 0, if so, minIndex becomes
+                // ... that value and the loop continues till all the elements have been gone through
                 for (int i = 1; i < counter; i++) {
                     if (data[i].steps < data[minIndex].steps) {
                         minIndex = i;
@@ -168,8 +173,9 @@ int main() {
                     // End of the longest period is the start plus the streak length minus 1
                     int longestEndIndex = longestStartIndex + longestStreak - 1;
                     printf("Longest period end: %s %s\n", data[longestEndIndex].date, data[longestEndIndex].time);
+                // If no steps over 500 are found in the data, make it print out an error message informing the user
                 } else {
-                    printf("No period found with steps over 500\n");
+                    printf("No period found with steps over 500.\n");
                 }
                 break;
 
