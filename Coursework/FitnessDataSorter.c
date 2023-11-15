@@ -12,13 +12,29 @@ typedef struct {
 
 FitnessData data[10000]; // Array to store fitness data
 
+// Function to tokenize a record
+void tokeniseRecord(char *record, char delimiter, char *date, char *time, int *steps) {
+    char *ptr = strtok(record, &delimiter);
+    if (ptr != NULL) {
+        strcpy(date, ptr);
+        ptr = strtok(NULL, &delimiter);
+        if (ptr != NULL) {
+            strcpy(time, ptr);
+            ptr = strtok(NULL, &delimiter);
+            if (ptr != NULL) {
+                *steps = atoi(ptr);
+            }
+        }
+    }
+}
+
 int main() {
     char filename[BUFFER_SIZE];
     char line[BUFFER_SIZE];
     int counter = 0;
 
     printf("Input filename: ");
-    scanf("%s", filename);
+    scanf("%1023s", filename);
     FILE *file = fopen(filename, "r");
     if (!file) {
         printf("Error: invalid file\n");
@@ -26,21 +42,14 @@ int main() {
     }
 
     while (fgets(line, BUFFER_SIZE, file)) {
-        // Used strtok to tokenize the line string, then NULL to get the next token 
-        // ... https://www.tutorialspoint.com/c_standard_library/c_function_strtok.htm
-        char *date = strtok(line, ",");
-        char *time = strtok(NULL, ",");
-        char *stepsStr = strtok(NULL, ",");
-        // If the data comes back as NULL, there is an error in the file (missing field), and the code will stop
-        if (date == NULL || time == NULL || stepsStr == NULL) {
-            printf("Error: invalid file\n");
+        tokeniseRecord(line, ',', data[counter].date, data[counter].time, &data[counter].steps);
+        
+        // Check for incomplete tokenisation
+        if (strlen(data[counter].date) == 0 || strlen(data[counter].time) == 0 || data[counter].steps == 0) {
+            printf("Error: invalid file format\n");
             fclose(file);
             return 1;
         }
-        int steps = atoi(stepsStr);
-        strcpy(data[counter].date, date);
-        strcpy(data[counter].time, time);
-        data[counter].steps = steps;
         counter++;
     }
     fclose(file);
@@ -56,7 +65,7 @@ int main() {
         }
     }
 
-    // Writing sorted data in a new file https://www.tutorialspoint.com/c_standard_library/c_function_strcat.htm
+    // Writing sorted data in a new file
     strcat(filename, ".tsv");
     FILE *outputFile = fopen(filename, "w");
     if (!outputFile) {
@@ -64,8 +73,7 @@ int main() {
         return 1;
     }
     for (int i = 0; i < counter; i++) {
-        // Spacing everything out with \t for a tab instead of a comma (for .tsv files)
-        fprintf(outputFile, "%s\t%s\t%d\t\n", data[i].date, data[i].time, data[i].steps);
+        fprintf(outputFile, "%s\t%s\t%d\n", data[i].date, data[i].time, data[i].steps);
     }
     fclose(outputFile);
 
