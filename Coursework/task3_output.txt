@@ -1,0 +1,13 @@
+Run the program:
+================
+
+./FitnessDataSorter
+
+Expected Output on Screen
+=========================
+Enter Filename: FitnessData_2023.csv
+Data sorted and written to FitnessData_2023.csv.tsv
+
+We then expect to see a file called: FitnessData_2023.csv.tsv
+
+Written out to the same directory your code is in
