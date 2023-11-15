@@ -56,7 +56,7 @@ int main() {
         }
     }
 
-    // Writing sorted data to new file
+    // Writing sorted data in a new file https://www.tutorialspoint.com/c_standard_library/c_function_strcat.htm
     strcat(filename, ".tsv");
     FILE *outputFile = fopen(filename, "w");
     if (!outputFile) {
@@ -64,6 +64,7 @@ int main() {
         return 1;
     }
     for (int i = 0; i < counter; i++) {
+        // Spacing everything out with \t for a tab instead of a comma (for .tsv files)
         fprintf(outputFile, "%s\t%s\t%d\t\n", data[i].date, data[i].time, data[i].steps);
     }
     fclose(outputFile);
