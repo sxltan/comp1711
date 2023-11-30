@@ -40,3 +40,26 @@ int* vector = (int *) malloc (sizeof(int)* array_size)
 - k = `sizeof (int) * array_size` (You calculate the size:)
 - Malloc returns a void type pointer.
 - You typecast it to `int`.
+
+## Linked Lists
+
+Singly Linked List - A linear data structure in which the elements are not stored in contigious memory locations and each element is connected only to its next element using a pointer.
+
+```c++
+void *malloc(size_t size)
+```
+
+- Size : This is the size of the memory block, in bytes.
+- Return Value : This function returns a pointer to the allocated memory, or NULL if the request fails.
+
+```c++
+first_node.next_element = (list*) malloc(sizeof(struct list));
+```
+
+- Dynamically create a new element, find out where it is, and then allocate the memory needed into the next element address
+
+```c++
+first_node.next_element = (list*) calloc(sizeof(struct list),1);
+```
+
+- Calloc() initialises things to 0
